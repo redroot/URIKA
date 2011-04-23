@@ -1,5 +1,5 @@
 <div id="feature_title">
-	<img src="<?php echo $image_url; ?>" id="profile_img" width="70" height="70" alt="user avatar" />
+	<a href="<?php echo base_url(); echo 'user/u/'.$username; ?>" title="link to <?php echo $username; ?>'s profile"><img src="<?php echo $image_url; ?>" id="profile_img" width="70" height="70" alt="user avatar" /></a>
 	<?php 
 	echo $follow_section;
 	?>

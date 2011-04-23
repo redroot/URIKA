@@ -1,5 +1,5 @@
 <div id="feature_title">
-	<img src="<?php echo $profile_url; ?>" id="profile_img" width="70" height="70" alt="user avatar" />
+	<a href="<?php echo $base_url; ?>user/u/<?php echo $username; ?>/" title="link to <?php echo $username; ?>'s profile"><img src="<?php echo $profile_url; ?>" id="profile_img" width="70" height="70" alt="user avatar" /></a>
 	
 	<h2><?php echo $mb_title; ?> - <small><a href="<?php echo $base_url; ?>user/u/<?php echo $username; ?>/"><?php echo $username; ?></a></small></h2>
 	<p class="u_info_string"><?php echo $mb_datetime; ?> <span class="sep">|</span>  <?php echo $mb_views; ?> views <span class="sep">|</span> <?php echo $favs_count; ?> favourites</p>
