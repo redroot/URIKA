@@ -1,0 +1,21 @@
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+*/config/database.php
+*/config/config.php
+*/system/logs/log-*.php
+*/system/cache/*
+*/system/cache/!index.html
+/uploads/
+
+/user_guide/

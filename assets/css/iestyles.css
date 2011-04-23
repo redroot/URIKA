@@ -1,0 +1,7 @@
+/*
+	IE style sheet, for quick fixes in ie8 and below
+*/
+
+/* attach htc to everything to just to get it to work */
+#top_leftnav li a, #top_leftnav li a:visited
+ { behaviour: url('PIE.htc'); }

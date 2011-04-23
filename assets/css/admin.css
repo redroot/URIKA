@@ -1,0 +1,48 @@
+body#admin .inner_wrap {width: 98% !important;}
+body#admin #feature_wrapper {background: #f0f0f0 !important; height: auto !important;  padding: 25px 10px 15px 10px; margin-bottom: 10px;}
+body#admin #top_leftnav {width: 1000px; !important;}
+
+body#admin .highlight a, body#admin .highlight a:visited{color:#ff9c00;}				
+body#admin .highlight a:hover { background: #ff4200 !important; color: #fff; }
+
+table {width: 99%; }
+
+/* table styles */
+th {background: #ededfe; font-size: 16px;}
+th.sorting { background: #fecdcd;}
+th,td { padding: 5px; }
+td a {font-weight: bold; }
+tr {border-bottom: 1px solid #aaa;}
+
+tr.even {background: #eee; }
+
+p.success, p.borderbox{ margin-bottom: 10px;}
+
+a.edit_link, a.delete_link {padding: 10px 10px 10px 32px;background-position: 10px 10px; width: 110px; background-repeat: no-repeat; background-color: #ddd; display:block;font-weight: bold;}
+a.edit_link { background-image: url('../images/layout/image_edit.png');}
+a.delete_link { background-image: url('../images/layout/delete.png');}
+
+#admin_search_form {background: #f3f3f3; display: none;}
+
+.admin_pagination a {font-weight: bold; padding: 4px; background: #e0e0e0; }
+
+/*
+	Menu styles
+*/
+li.admin_dropdown { width: 70px; }
+li.admin_dropdown:hover ul { display: block; }
+li.admin_dropdown ul { width: 265px; background-color: #212121; padding: 5px; border-radius: 5px; -webkit-border-radius: 5px; display: none;}
+li.admin_dropdown ul li { display: block; height: auto !important;width: auto !important; float: left; width: 120px; margin: 0px 5px !important; }
+li.admin_dropdown ul li a { background-color: #5d5d5d; }
+
+/*
+	Homepage 
+*/
+ul.admin_table_sum { width: 630px;}
+ul.admin_table_sum li { list-style: none; width: 200px; float: left; margin: 0px 5px 0px 5px; !important; }
+ul.admin_table_sum li a {border-radius: 5px; margin: 5px 5px 5px 5px; background-position: 10px 15px; background-repeat: no-repeat; width: 160px; display: block; padding:15px 5px 15px 35px; font-size: 16px; background-color: #f3f3f9; }
+ul.admin_table_sum li a:hover {background-color: #efe9e3; }
+
+/* login styles */
+body#admin_login {background: #222; }
+#admin_login .inner_wrap { width: 500px; margin-top: 120px; border: 10px solid #555; background: #fff; padding: 20px;  }
