@@ -172,7 +172,7 @@ ul.bigCollectionsList {margin: 0px 0px !important; padding: 0px !important;}
 			.bigCollectionsList li a .collection_left .collection_name {display: block; font-size: 18px; font-weight: bold; margin-bottom: 10px;  background: transparent url('../images/layout/folder_image.png') no-repeat 3px 2px; padding-left: 25px;}
 			.bigCollectionsList li a .collection_left .collection_data {display:block;}
 				.bigCollectionsList li a:hover .collection_left .collection_data { color: #333; }
-			.bigCollectionsList li a .collection_left .collection_update {display:block; color: #999; font-size: 80%;}			
+			.bigCollectionsList li a .collection_left .collection_update {display:block; color: #999; font-size: 80%; margin-top: 10px;}			
 		
 		.bigCollectionsList li a .collection_right {float:right;display: block; width: 455px;}
 			.bigCollectionsList li a .collection_right img { border: 3px solid #ebebeb; float: left; margin-left: 12px; -moz-box-shadow: 0px 1px 2px #888;-webkit-box-shadow: 0px 1px 2px #888;box-shadow: 0px 1px 2px #888; }
