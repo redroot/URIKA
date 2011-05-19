@@ -21,16 +21,7 @@
 			
 			tabdiv.addClass("jsReady");
 			
-			//set default active
-			if($('ul.tabNav li.active',tabdiv).length != 1)
-			{
-				$('ul.tabNav li:first',tabdiv).addClass("active");
-			}
 			
-			if($('.tabContent.show',tabdiv).length != 1)
-			{
-				$('.tabContent:first',tabdiv).addClass("show");
-			}
 			
 			var j = 1;
 			//generate and set ids
@@ -45,10 +36,29 @@
 			});
 			
 			
+			//set default active or detect anchor
+			
+			var anchor = window.location.hash;
+			
+			console.log(anchor);
+			
+			if($('ul.tabNav li.active',tabdiv).length != 1)
+			{
+				$('ul.tabNav li:first',tabdiv).addClass("active");
+			}
+			
+			if($('.tabContent.show',tabdiv).length != 1)
+			{
+				$('.tabContent:first',tabdiv).addClass("show");
+			}
+			
+			
 			
 			// set up active toggler
-			$('ul.tabNav li a', tabdiv).click(function()
+			$('ul.tabNav li a', tabdiv).click(function(e)
 			{
+				e.preventDefault();
+				
 				$('ul.tabNav li', tabdiv).removeClass("active");
 				$(this).parent().addClass("active");
 				
@@ -60,4 +70,6 @@
 			
 			i++;
 		});
+		
+		// check for anchor
 	}
