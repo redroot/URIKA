@@ -86,8 +86,8 @@
 			<div id="account_drop" class="menu_dropbox">
 				<ul>
 					<li><a href="'.$base.'user/u/'.$this->session->userdata("username").'" title="My Profile">My Profile</a></li>
-					<li><a href="'.$base.'user/account/" title="View ou account">My Account</a></li>
-					<li><a href="'.$base.'user/logout" title="Logout">Sign Out</a></li>
+					<li><a href="'.$base.'user/account/" title="View your account">My Account</a></li>
+					<li><a href="'.$base.'user/logout" title="Log out">Log Out</a></li>
 				</ul>
 				
 				

@@ -42,8 +42,10 @@ function js_init()
 **/
 function menu_dropdowns()
 {
-	$('li.menu_drop').click(function()
+	$('li.menu_drop').click(function(e)
 		{
+			e.preventDefault();
+			
 			var box = $(this).attr("title");
 			if($(this).hasClass('active'))
 			{
