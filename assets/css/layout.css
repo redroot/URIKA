@@ -27,7 +27,7 @@ body { font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
 	#header_wrapper a {text-decoration: none; color: #ddd; }
 	#header_wrapper ul li a:focus { border: none; outline: none; }
 
-		#top_leftnav { float: left;  height: 47px; width:320px; position: relative; }
+		#top_leftnav { float: left;  height: 47px; width:340px; position: relative; }
 			#top_leftnav li  {float: left; padding-right: 5px; height: 47px;}
 				#top_leftnav li a, #top_leftnav li a:visited {display:block; padding: 8px 12px;color: #ddd; -moz-border-radius: 5px;
 border-radius: 5px; margin-top: 5px;}
@@ -59,7 +59,7 @@ border-bottom-left-radius: 8px; z-index: 6;}
 			div.menu_dropbox a { color: #fff !important; }
 
 			#login_li { width: 76px; }
-			#account_li a {padding-right: 30px !important; }
+			#account_li a, #upload_li a {padding-right: 30px !important; }
 			#upload_li a {padding-right: 25px !important; }
 			#notices_li span { padding: 3px 5px; background-color: #b81d02; font-weight: bold; color: #fff; -moz-border-radius: 5px;
 border-radius: 5px; }
@@ -67,6 +67,7 @@ border-radius: 5px; }
 						#login_drop {background: #b81d02; position: absolute; color: #fff; height: 190px; width: 280px;
  top: 45px; left: 87px; display: none;}
 				#account_drop {width: 180px; top:46px; right: 5px;  display: none; }
+				#upload_drop { width: 140px; top: 46px; left: 190px;  display: none;}
 
 				#lform {padding: 15px; margin: 5px 8px 0px 8px; background: #e20015; border-radius: 5px; -moz-border-radius: 5px;}
 				#lform label {display: block; margin-top: 0px; color: #ffeecc; }
@@ -79,11 +80,13 @@ border-radius: 5px; }
 				#signup_li a strong {font-weight: bold; color: #ff4200;}
 				#signup_li a:hover { background: #ff4200 !important; color: #fff; }
 				#signup_li a:hover strong { color: #000; }
+				
+				#account_drop ul, #upload_drop ul {background: #dc2015; padding: 2px; margin: 5px; float:left; border-radius: 5px; -moz-border-radius: 5px;}
+				
+				#account_drop ul li, #upload_drop ul li {width: 96%; height: 35px; }
+				#account_drop ul li a, #upload_drop ul li a{ margin: 2px 0px; width: 83%; display: block; color: #fff !important;}
+				#account_drop ul li a:hover, #upload_drop ul li a:hover {background: #ff4200 !important; color: #fff;}
 
-				#account_drop ul {background: #dc2015; padding: 2px; margin: 5px; float:left; border-radius: 5px; -moz-border-radius: 5px;}
-				#account_drop ul li {width: 95%; height: 35px; }
-				#account_drop ul li a { margin: 2px 0px; display: block; color: #fff !important;}
-				#account_drop ul li a:hover {background: #ff4200 !important; color: #fff;}
 
 
 /**

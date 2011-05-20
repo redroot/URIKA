@@ -440,7 +440,7 @@ class User extends Controller {
 						$fimage_url = getUserProfileURL($urow->u_profile_id, $urow->u_email); // urika.helper
 						
 						
-						$profilelink = $base.'user/u/'.$urow->u_username;
+						$profilelink = $base.'user/u/'.$urow->u_username.'/';
 						
 						$lidata = array(
 							"user_id" => $urow->user_id,
@@ -483,7 +483,7 @@ class User extends Controller {
 						$fimage_url = getUserProfileURL($urow->u_profile_id, $urow->u_email);
 						
 						$base = base_url();
-						$profilelink = $base.'user/u/'.$urow->u_username;
+						$profilelink = $base.'user/u/'.$urow->u_username.'/';
 						
 						$lidata = array(
 							"user_id" => $urow->user_id,

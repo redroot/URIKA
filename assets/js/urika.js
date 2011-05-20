@@ -46,7 +46,7 @@ function menu_dropdowns()
 		{
 			e.preventDefault();
 			
-			var box = $(this).attr("title");
+			var box = $(this).attr("data-menu");
 			if($(this).hasClass('active'))
 			{
 				$(this).removeClass('active');

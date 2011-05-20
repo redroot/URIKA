@@ -36,12 +36,7 @@
 			});
 			
 			
-			//set default active or detect anchor
-			
-			var anchor = window.location.hash;
-			
-			console.log(anchor);
-			
+
 			if($('ul.tabNav li.active',tabdiv).length != 1)
 			{
 				$('ul.tabNav li:first',tabdiv).addClass("active");

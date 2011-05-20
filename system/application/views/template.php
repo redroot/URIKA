@@ -39,15 +39,28 @@
 				<?php
 				$base = base_url();
 			
-		
+				$upload_drop = "";
 				if($this->session->userdata("is_logged_in") == 1)
 				{
 					echo '
-					<li><a href="'.$base.'image/add/" title="Upload and crop an Image">Upload</a></li>
+					<li class="menu_drop" id="upload_li" data-menu="#upload_drop"><a href="#"  title="Upload and crop an Image">Upload</a></li>
 					';
+					
+					$upload_drop = '
+					<div id="upload_drop" class="menu_dropbox">
+						<ul>
+							<li><a href="'.$base.'image/add/" class="menu_drop" title="Upload and crop an Image">Add Image</a></li>
+							<li><a href="'.$base.'user/u/'.$this->session->userdata("username").'/?moodboard_add=1" title="Add a moodboard">Add Moodboard</a></li>
+							<li><a href="'.$base.'page/tools/" title="Tools">Browser Tools</a></li>
+						</ul>
+					</div>
+				
+					';
+					
 				}
 				?>
 				<li><a href="<?php echo base_url(); ?>page/tools/" title="Tools">Tools</a></li>
+				<?php echo $upload_drop; ?>
 			</ul>
 		</div>
 		<div id="top_rightnav">
@@ -79,9 +92,11 @@
 				</form> 
 				</li>
 			
-				<li id="account_li" class="menu_drop" title="#account_drop"><a href="#" title="My Account"><strong>'.$this->session->userdata("username").'</strong></a></li>
+				<li id="account_li" class="menu_drop" data-menu="#account_drop"><a href="#" title="My Account"><strong>'.$this->session->userdata("username").'</strong></a></li>
 					<li id="notices_li"><a href="'.$base.'user/notices/" title="View your notices">View Notices '.$notice_count_html.'</a></li>
 			</ul>
+			
+			
 			
 			<div id="account_drop" class="menu_dropbox">
 				<ul>
@@ -104,7 +119,7 @@
                     <input type="submit" class="hide" name="submit_search" value="Search" id="searchbutton" /> 
 				</form> 
 				</li>
-				<li id="login_li" class="menu_drop" title="#login_drop"><a href="#" title="signin">Log In</a></li>
+				<li id="login_li" class="menu_drop" data-menu="#login_drop"><a href="#" title="signin">Log In</a></li>
 				<li id="signup_li"><a href="'.$base.'user/signup" title="Sign Up to UR!KA">join <strong>UR!KA</strong></a></li>
 			</ul>
 			<div id="login_drop" class="menu_dropbox">

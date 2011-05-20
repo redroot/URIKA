@@ -60,7 +60,7 @@ class Image_model extends Model {
 			SELECT * FROM images 
 			WHERE i_user_id = ".$user_id."
 			ORDER BY  i_datetime DESC
-		
+			LIMIT 1
 			";
 		
 		
