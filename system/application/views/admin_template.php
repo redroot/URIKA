@@ -30,6 +30,7 @@
 				</li>
 				<li> <a href="<?php echo base_url(); ?>batcave/tempfiles/" title="manage temp folder">Temp Files</a>
 				<li> <a href="<?php echo base_url(); ?>batcave/blacklistadd/" title="ADd to blacklist">Blacklist Add</a>
+				<li> <a href="<?php echo base_url(); ?>batcave/invites/" title="Invites">Invites</a>
 				<li> <a href="<?php echo base_url(); ?>batcave/analytics/" title="Analytics">Analytics</a>
 				<li class="highlight"> <a href="<?php echo base_url(); ?>batcave/logout/" title="Admin Logout">Logout</a>
 			</ul>

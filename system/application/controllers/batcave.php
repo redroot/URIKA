@@ -757,9 +757,11 @@ class batcave extends Controller {
 				$out .= '<p class="error">E-mail entered not valid</p>';
 			}
 			
+			
+			
 				
 				$out .= '
-					</ul>
+					
 					<form action="" method="post" style="width: 250px">
 						<fieldset width="250">
 							<label for="blEmail">E-mail</label>
@@ -782,6 +784,93 @@ class batcave extends Controller {
 				// set back to defaut
 			$this->template->set_template("urika");
 		}
+	}
+	
+	/*
+		Invites page, where an admin can create numerous invites user-free or per use
+	*/
+	function invites()
+	{
+		if(isAdmin() == false)
+		{
+			redirect('','location');
+		}
+	
+		if($this->input->post("inviteAction") !== FALSE)
+		{
+			if(!is_numeric($this->input->post("inviteCount")))
+			{
+				$out = '<p class="error">Invite count was not a number</p>';
+			}
+			else
+			{
+				$count = $this->input->post("inviteCount");
+				$this->load->model("invite_model");
+				
+				if($this->input->post("inviteAction") == "allGenerate")
+				{
+					$this->invite_model->generateInvites($count);
+					redirect('batcave/invites/?alGen='.$count,'location');
+				}
+				else if($this->input->post("inviteAction") == "userGenerate")
+				{
+					
+				}
+			}
+		}
+		else
+		{
+			$out = "<p><strong>Use the form below to generate invites:</strong></p>";
+			
+			$q_vars = get_url_vars();
+			
+			if(isset($q_vars->userGen))
+			{
+				$out .= '<p class="success"><strong>'.$q_vars->userGen.'</strong> new invites generated for all users</p>';
+			}
+			else if(isset($q_vars->allGen))
+			{
+				$out .= '<p class="success"><strong>'.$q_vars->allGen.'</strong> new invites generated</p>';
+			}
+			
+			
+				
+				$out .= '
+					<form action="" method="post" style="width: 250px">
+						<fieldset width="250">
+							<ul>
+								<li>
+									<label for="inviteAction">Action to perform:</label>
+									<select name="inviteAction">
+										<option value="allGenerate">Generate Non-User</option> 
+										<option value="userGenerate">Generate For Each User</option>
+									</select>
+								</li>
+								<li>
+									<label for="inviteCount">How Many Invites:</label>
+									<input name="inviteCount" type="number" value="5" />
+								</li>
+								<li>
+									<input type="submit" value="Generate Invites" name="inviteSub" />
+								</li>
+						</fieldset>
+					</form>
+				';
+		}
+		
+		// list table fields
+			$this->template->set_template("urika_admin");
+		
+		$this->template->add_css("assets/css/admin.css");
+			
+		$this->template->write("menu_lis",$this->_tableMenuLinksHTML());
+			
+		$this->template->write("feature","<h2>Generate Invites</h2>");
+		$this->template->write("content",$out);
+		$this->template->render();
+			
+			// set back to defaut
+		$this->template->set_template("urika");
 	}
 	
 	/**
@@ -936,6 +1025,8 @@ class batcave extends Controller {
 		}
 		
 	}
+	
+	
 	
 	/**
 		Analytics page, uses the analytics class to grab information from
