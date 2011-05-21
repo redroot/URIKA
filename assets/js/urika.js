@@ -47,6 +47,7 @@ function menu_dropdowns()
 			e.preventDefault();
 			
 			var box = $(this).attr("data-menu");
+			
 			if($(this).hasClass('active'))
 			{
 				$(this).removeClass('active');
@@ -55,6 +56,14 @@ function menu_dropdowns()
 			}
 			else
 			{		
+			
+				$("li.menu_drop").each(function(){
+				
+					$(this).removeClass('active');
+					$($(this).attr("data-menu")).removeClass('show');
+				
+				});
+				
 				//dynamic lef tposition
 				if($(box).attr("id") == "account_drop")
 				{
@@ -64,6 +73,8 @@ function menu_dropdowns()
 				$(this).addClass('active');
 				$(box).addClass('show');
 				$('#lform #l_username').focus();
+				
+				
 				
 				
 			}

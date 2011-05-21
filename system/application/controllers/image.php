@@ -661,12 +661,37 @@ class Image extends Controller {
 				$thumbname = "thumb_".$this->input->post("add_filename_temp");
 				$thumb_img = ImageCreateTrueColor($this->thumbSize["w"],$this->thumbSize["h"]);
 				
+				/*
 				// want to find the middle so we need to calculate offsets
-				$offx = ($dims["new_w"]/2)-	($this->thumbSize["w"]/2);
-				$offy = ($dims["new_h"]/2)-	($this->thumbSize["h"]/2);
+				//$offx = ($dims["new_w"]/2)-	($this->thumbSize["w"]/2);
+				//$offy = ($dims["new_h"]/2)-	($this->thumbSize["h"]/2);
+				
+				old method */
+				
+				// determine size for crop
+				// if it is wider than it is high, then the height is fixed to thumb height
+				// otherwise the width is used
+				
+				$ratio = $dims["new_w"] / $dims["new_h"];
+				$copy_w = $copy_h = 0;
+				
+				if($dims["new_w"] >= $dims["new_h"])
+				{
+					$offx = ($dims["new_w"]/2)-	($dims["new_h"]/2);
+					$offy = 0;
+					
+					$copy_w = $copy_h = $dims["new_h"];
+				}
+				else if($dims["new_w"] < $dims["new_h"])
+				{
+					$offx = 0;
+					$offy = ($dims["new_h"]/2)-	($dims["new_w"]/2);
+					
+					$copy_w = $copy_h = $dims["new_w"];
+				}
 				
 				imagecopyresampled($thumb_img,$full_img,0,0,$offx,$offy,
-				$this->thumbSize["w"], $this->thumbSize["h"],$this->thumbSize["w"], $this->thumbSize["h"]);
+				$this->thumbSize["w"], $this->thumbSize["h"],$copy_w, $copy_h);
 				imagejpeg($thumb_img,UPLOAD_FINAL_PATH.$thumbname,150);
 				
 				$insert_array["i_thumb_url"] = $base_url.'uploads/images/'.$thumbname;

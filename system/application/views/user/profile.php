@@ -14,17 +14,22 @@
 
 if(isset($q_vars->image_deleted))
 {
-	echo '<p class="success" style="margin-bottom: 10px;">Image deleted successfully!</p>';
+	echo '<p class="success">Image deleted successfully!</p>';
 }
 
 if(isset($q_vars->collection_deleted))
 {
-	echo '<p class="success" style="margin-bottom: 10px;">Collection deleted successfully!</p>';
+	echo '<p class="success">Collection deleted successfully!</p>';
 }
 
 if(isset($q_vars->moodboard_deleted))
 {
-	echo '<p class="success" style="margin-bottom: 10px;">Moodboard deleted successfully!</p>';
+	echo '<p class="success">Moodboard deleted successfully!</p>';
+}
+
+if(isset($q_vars->moodboard_add))
+{
+	echo '<p class="borderbox"><strong>You can add a moodboard from a collection, under the <em>Collections</em> tab.</strong></p>';
 }
 
 	?>

@@ -641,8 +641,27 @@ class api extends Controller {
 							$offx = ($params["urika_crop_width"]/2)-	80;
 							$offy = ($params["urika_crop_height"]/2)-	80;
 							
+							$ratio = $params["urika_crop_width"] / $params["urika_crop_height"];
+							$copy_w = $copy_h = 0;
+							
+							if($params["urika_crop_width"] >= $params["urika_crop_height"])
+							{
+								$offx = ($params["urika_crop_width"]/2)-($params["urika_crop_height"]/2);
+								$offy = 0;
+								
+								$copy_w = $copy_h = $params["urika_crop_height"];
+							}
+							else if($params["urika_crop_width"] < $params["urika_crop_height"])
+							{
+								$offx = 0;
+								$offy = ($params["urika_crop_height"]/2)-($params["urika_crop_width"]]/2);
+								
+								$copy_w = $copy_h = $params["urika_crop_width"];
+							}
+							
 							imagecopyresampled($thumb_img,$full_img,0,0,$offx,$offy,
-							160,160,160,160);
+							160,160,$copy_w, $copy_h);
+
 							imagejpeg($thumb_img,UPLOAD_FINAL_PATH.$thumbname,150);
 							
 							

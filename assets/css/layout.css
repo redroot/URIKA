@@ -83,8 +83,13 @@ border-radius: 5px; }
 				
 				#account_drop ul, #upload_drop ul {background: #dc2015; padding: 2px; margin: 5px; float:left; border-radius: 5px; -moz-border-radius: 5px;}
 				
-				#account_drop ul li, #upload_drop ul li {width: 96%; height: 35px; }
-				#account_drop ul li a, #upload_drop ul li a{ margin: 2px 0px; width: 83%; display: block; color: #fff !important;}
+				#account_drop ul li, #upload_drop ul li { height: 35px; width: 96%; }
+				
+				#account_drop ul li a, #upload_drop ul li a{ margin: 2px 0px; display: block; color: #fff !important;}
+				
+				#account_drop ul li a { width: 88%; }
+				#upload_drop ul li a {width: 83%; }
+				
 				#account_drop ul li a:hover, #upload_drop ul li a:hover {background: #ff4200 !important; color: #fff;}
 
 
@@ -164,6 +169,10 @@ body#user_home #feature_wrapper {height: 190px;  background-position: center bot
 		a#profile_unfollow { width: 131px; height: 38px; background-position: -102px bottom; }
 		a#profile_unfollow:hover { width: 131px; height: 37px; background-position: -102px -1px; }
 
+		
+		#user_profile p.success, 
+		#user_profile p.error, #user_profile p.borderbox {margin-bottom: 10px;}
+		
 		.account_profile_img {text-align: center; margin: 5px 0px; }
 			.account_profile_img img {border: 10px solid #fff;}
 
