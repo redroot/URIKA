@@ -4,6 +4,9 @@
 **/
 class User extends Controller {
 
+	// global setting for invites. e.g. test invite code, display invites
+	private $useInvites = true;
+
 	function User()
 	{
 		parent::Controller();	
@@ -897,7 +900,10 @@ class User extends Controller {
 		$this->template->write("title","Join Urika");
 		
 		//empty for now
-		$data = array("further_errors" => "");
+		$data = array(
+			"further_errors" => "",
+			"useInvite" => $this->useInvites
+			);
 		
 		$this->template->write_view("content","user/signup_form", $data, TRUE);
 		
@@ -1002,6 +1008,23 @@ class User extends Controller {
 				$further_errors[] = "Leave well enough alone spam bot";
 			}
 			
+			// invite check  
+			$inviteToDelete = false;
+			if($this->useInvites == true)
+			{
+				$this->load->model("invite_model");
+				$inv_row = $this->invite_model->getInvite(trim($this->input->post("s_invite")),"inv_code");
+				
+				if($inv_row == false)
+				{
+					$further_errors[] = "The invite code you used does not exist";
+				}
+				else
+				{
+					$inviteToDelete = $inv_row->row();
+				}
+			}
+			
 			if(count($further_errors) > 0)
 			{
 				// loop through further errors and output with the rest of errors
@@ -1014,7 +1037,10 @@ class User extends Controller {
 					$out .= '<p class="error">'.$error.'</p>';
 				}
 				
-				$data["further_errors"] = $out;
+				$data = array(
+			"further_errors" => $out,
+			"useInvite" => $this->useInvites
+			);
 				
 				$this->template->add_js("assets/js/formvalidation.js");
 				$this->template->write("title","Join Urika");
@@ -1031,6 +1057,15 @@ class User extends Controller {
 				if($user_made["insert"] == true)
 				{
 					$this->template->write("title","Registration Successfull");
+					
+					
+					/*
+						Delete invite if it exists
+					*/
+					if($this->useInvites == true && $inviteToDelete != false)
+					{
+						$this->invite_model->deleteInvite($inviteToDelete->invite_id);
+					}
 					
 					/*
 						send verification e-mail
@@ -1632,6 +1667,27 @@ The Team @ UR!KA
 				Grab stats
 			*/
 			$stats = $this->user_model->getUserStats($row->user_id);
+			
+			/*
+				grab invites if required
+			*/
+			$invites = false;
+			if($this->useInvites == true)
+			{
+				$userinvites = $this->user_model->getUserInvites($row->user_id);
+				
+				$invites["count"] = $userinvites["count"];
+				$invites["html"] = '';
+				
+				foreach($userinvites["result"] as $i => $inv)
+				{
+					$invites["html"] .= '
+						<p class="borderbox">
+							Invite '.($i+1).': <strong style="color: #930;">'.$inv->inv_code.'</strong>
+						</p>
+					';
+				}
+			}
 		
 			
 			$data = array (
@@ -1652,7 +1708,8 @@ The Team @ UR!KA
 					'gravatar_class' => $gravatar_class,
 					'upload_url' => $avatar_url
 				),
-				'stats' => $stats
+				'stats' => $stats,
+				'invites' => $invites
 				
 			);
 

@@ -810,11 +810,12 @@ class batcave extends Controller {
 				if($this->input->post("inviteAction") == "allGenerate")
 				{
 					$this->invite_model->generateInvites($count);
-					redirect('batcave/invites/?alGen='.$count,'location');
+					redirect('batcave/invites/?allGen='.$count,'location');
 				}
 				else if($this->input->post("inviteAction") == "userGenerate")
 				{
-					
+					$this->invite_model->generateInvitesForUsers($count);
+					redirect('batcave/invites/?userGen='.$count,'location');
 				}
 			}
 		}

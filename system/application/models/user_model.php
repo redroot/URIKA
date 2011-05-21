@@ -697,6 +697,22 @@ class User_model extends Model {
 	}
 	
 	/*
+		Returns an array of user invites
+		
+		@param user_id : if of user to check
+	*/
+	function getUserInvites($user_id)
+	{
+		$this->db->where("inv_user_id",$user_id);
+		$query = $this->db->get("invites");
+		
+		$rtn["count"] = $query->num_rows;
+		$rtn["result"] = ($query->num_rows > 0) ? $query->result() : 0;
+		
+		return $rtn;
+	}
+	
+	/*
 		Checks if an e-mail is already on a blacklist
 		
 		@param email : e-mail to check for

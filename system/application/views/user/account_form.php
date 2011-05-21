@@ -10,10 +10,18 @@
 			<ul class="tabNav">
 				<li><a href="#" title="Tab link">Profile Image</a></li>
 				<li><a href="#" title="Tab link">Public Details</a></li>
-				<li><a href="#" title="Tab link">Change Password</a></li>
-				<li><a href="#" title="Tab link">Change E-mail</a></li>
+				<li><a href="#" title="Tab link">Password</a></li>
+				<li><a href="#" title="Tab link">E-mail</a></li>
 				<li><a href="#" title="Tab link">Notices</a></li>
 				<li><a href="#" title="Tab link">API Key</a></li>
+				<?php
+					if($invites != false)
+					{
+						$inviteword = ($invites["count"] == 1) ? "Invite" : "Invites";
+						
+						echo '<li><a href="#" title="Tab link"><strong>'.$invites["count"].'</strong> '.$inviteword.'</a></li>';
+					}
+				?>
 			</ul>
 			
 			<div class="tabContentWrapper">
@@ -197,6 +205,17 @@
 						?></strong>
 					</p>
 				</div>
+				<?php
+					if($invites != false)
+					{
+						echo '
+					<div class="tabContent">
+						<p style="margin-bottom:10px;">Below is a list of your invite codes, which you can use to invite new members. Please be responsible with your invite codes: only invite those you know will contribute to the site. </p>
+						'.$invites["html"].'
+					</div>
+						';
+					}
+				?>
 			</div>
 				
 		</div>

@@ -57,6 +57,7 @@ p.success { background: #cfc; border: 5px solid #fff; color: #030; outline: 1px 
 
 	.form_last {width: 95%; clear: both; }
 	
+		
 	#content_wrapper fieldset li, #facebox  li {list-style:none; margin-bottom: 5px;}
 		#content_wrapper fieldset li label, #facebox li label { display: block; margin-bottom: 3px; }
 		
@@ -68,7 +69,8 @@ p.success { background: #cfc; border: 5px solid #fff; color: #030; outline: 1px 
 		#content_wrapper form label.error, #content_wrapper span.error { color: #d22; background-image: url('../images/layout/cancel.png');}
 		#content_wrapper form label.validfield, #content_wrapper span.success { color: #2a2;   background-image: url('../images/layout/accept.png') !important;}
 	
-	
+	#content_wrapper fieldset li.form_li_sep {padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px solid #ccc; }
+
 /** 
 	Tab styles 
 **/

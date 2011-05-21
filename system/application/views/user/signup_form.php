@@ -13,8 +13,23 @@
 		echo $further_errors;
 		?>
 			<fieldset>
-		<legend>Pick a username</legend>
+		<legend>Fill in your details</legend>
 		<ul>
+			<?php
+		if($useInvite == true)
+		{
+			echo '
+			<li class="form_li_sep">
+				<label for="s_invite"><strong>Your Invite Code</strong></label>
+				<input type="text" name="s_invite" id="s_invite" style="width: 300px" placeholder="Invite Code" class="required"  />
+			</li>
+			
+			';
+		
+		
+		}
+			
+			?>
 			<li>
 				<label for="s_username">Username</label>
 				<input type="text" name="s_username" id="s_username" placeholder="Enter a username" minlength="4" class="required"  />
@@ -33,6 +48,7 @@
 				<input type="password" name="s_password_b" id="s_password_b" equalTo="#s_password_a" minlength="8" class="required"   />
 			
 			</li>
+		
 			<li>
 				<label for="s_human">Human Check: 8 + 3 = ?</label>
 				<input type="text" name="s_human" id="s_human" class="required"  />

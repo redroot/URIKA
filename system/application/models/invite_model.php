@@ -14,7 +14,7 @@ class invite_model extends Model {
 	function getInvite($value,$field = "invite_id")
 	{
 		$this->db->where(trim($field), trim($value));
-		$query = $this->db->get('invite');
+		$query = $this->db->get('invites');
 		
 		if($query->num_rows == 1)
 		{
@@ -63,6 +63,53 @@ class invite_model extends Model {
 		
 		return true;
 	}
+	
+	/*
+		Generates n invite codes for all users for each user, as long as they are verified
+		
+		@param count : number of invites per user
+	*/
+	function generateInvitesForUsers($count = 1)
+	{
+		$words = array(
+			"shinobiz",
+			"samuraiz",
+			"ninjaz",
+			"warriorz",
+			"hokagez"
+		);
+		
+		$this->load->helper("string");
+		
+		$usersql = 'SELECT user_id, u_verified FROM users';
+		
+		$users = $this->db->query($usersql)->result();
+		
+		$userscount = count($users);
+		
+		$invitessql = '
+			INSERT INTO invites
+				(inv_code,inv_user_id)
+			VALUES
+				';
+		
+		for($i = 0; $i < $userscount; $i++)
+		{
+			if($users[$i]->u_verified == 0)
+			{
+				continue;
+			}
+			
+				
+			$invitessql .= '("'.random_string('unique').$words[rand(0,count($words)-1)].'",'.$users[$i]->user_id.'),';
+		}
+		
+		$invitessql = substr($invitessql,0,-1).';';
+
+		$this->db->query($invitessql);
+		
+		return true;
+	}
 
 ////////////// UPDATE FUNCTIONS
 
@@ -72,7 +119,7 @@ class invite_model extends Model {
 		Deletes by id, including all related records
 		@param id : invite_id to delete
 	*/
-	function deleteNotice($id)
+	function deleteInvite($id)
 	{
 		if($id != null)
 		{
