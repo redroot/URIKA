@@ -189,7 +189,7 @@ class Collection extends Controller {
 				$view_data = array(
 					"collection_id" => $insert["id"],
 					"collection_name" => $insert_array["col_name"],
-					"collection_url" => $base.'collection/view/'.$insert["id"],
+					"collection_url" => $base.'collection/view/'.$insert["id"].'/'.slugify($insert_array["col_name"]).'/',
 					"collection_update" => date("F j, Y, G:i"),
 					"collection_user" => $this->session->userdata("username"),
 					"collection_images" => '<em>No images added<em>',
@@ -315,7 +315,7 @@ class Collection extends Controller {
 								
 								
 								
-								$notice_html .= ' to their collection <a href="'.$base.'collection/view/'.$collection->collection_id.'/" title="View Collection">'.$collection->col_name.'</a>';
+								$notice_html .= ' to their collection <a href="'.$base.'collection/view/'.$collection->collection_id.'/'.slugify($collection->col_name).'/" title="View Collection">'.$collection->col_name.'</a>';
 								
 								$notice_insert["n_html"] = $notice_html;
 								
@@ -447,7 +447,7 @@ class Collection extends Controller {
 						
 						
 						
-						$notice_html .= ' to their collection <a href="'.$base.'collection/view/'.$insertcol["id"].'/" title="View Collection">'.$this->input->xss_clean($_POST["newcol_name"]).'</a>';
+						$notice_html .= ' to their collection <a href="'.$base.'collection/view/'.$insertcol["id"].'/'.slugify($col_insert_array["col_name"]).'/" title="View Collection">'.$this->input->xss_clean($_POST["newcol_name"]).'</a>';
 						
 						$notice_insert["n_html"] = $notice_html;
 						
@@ -520,7 +520,7 @@ class Collection extends Controller {
 				
 				if($update == true)
 				{
-					redirect('/collection/view/'.$col->collection_id.'/?col_saved=1','location');
+					redirect('/collection/view/'.$col->collection_id.'/'.slugify($col->col_name).'/?col_saved=1','location');
 				}
 				else
 				{
@@ -683,7 +683,7 @@ class Collection extends Controller {
 				// now show delete screen
 				$data = array(
 					"collection_title" => $col->col_name,
-					"collection_url" => $base."collection/view/".$col->collection_id."/", 
+					"collection_url" => $base."collection/view/".$col->collection_id.'/'.slugify($col->col_name).'/', 
 					"delete_id" => $col->collection_id
 				);
 				

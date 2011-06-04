@@ -353,7 +353,7 @@ class User extends Controller {
 					$view_data = array(
 						"collection_id" => $irow->collection_id,
 						"collection_name" => $irow->col_name,
-						"collection_url" => $base.'collection/view/'.$irow->collection_id,
+						"collection_url" => $base.'collection/view/'.$irow->collection_id.'/'.slugify($irow->col_name).'/',
 						"collection_update" => date("F j, Y, G:i",strtotime($irow->col_updated)),
 						"collection_user" => $row->u_username,
 						"collection_images" => $images_html,
