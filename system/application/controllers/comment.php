@@ -130,13 +130,19 @@ class Comment extends Controller {
 								
 						if($_POST["type"] == "image")
 						{
-							$n_url = $base.'image/view/'.$_POST["subject_id"].'/#comment_'.$insert["id"];				
+							$this->load->model("image_model");
+							$image = $this->image_model->getImage($_POST["subject_id"])->row();
+							
+							$n_url = $base.'image/view/'.$_POST["subject_id"].'/'.slugify($image->i_title).'/#comment_'.$insert["id"];				
 							
 							$notice_html .= 'upload <a href="'.$n_url.'" title="View comment on this image">'.$_POST["subject_name"].'</a>';
 						}
 						else if($_POST["type"] == "moodboard")
 						{
-							$n_url = $base.'moodboard/view/'.$_POST["subject_id"].'/#comment_'.$insert["id"];				
+							$this->load->model("moodboard_model");
+							$mb = $this->moodboard_model->getMoodboard($_POST["subject_id"])->row();
+
+							$n_url = $base.'moodboard/view/'.$_POST["subject_id"].'/'.slugify($mb->m_title).'/#comment_'.$insert["id"];				
 							
 							$notice_html .= 'moodboard <a href="'.$n_url.'" title="View comment on this moodboard">'.$_POST["subject_name"].'</a>';
 						}

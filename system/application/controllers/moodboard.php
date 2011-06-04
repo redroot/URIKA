@@ -394,7 +394,7 @@ class Moodboard extends Controller {
 			else
 			{
 				// it worked
-				redirect("/moodboard/view/".$query['id']."/","location");
+				redirect("/moodboard/view/".$query['id'].'/'.slugify($insert_array["m_title"]).'/',"location");
 			}
 		}
 		else
@@ -602,7 +602,7 @@ class Moodboard extends Controller {
 				
 				if($update == true)
 				{
-					redirect('/moodboard/view/'.$mb->moodboard_id.'/?saved=1','location');
+					redirect('/moodboard/view/'.$mb->moodboard_id.'/'.slugify($update_data["m_title"]).'/?saved=1','location');
 				}
 				else
 				{
@@ -716,7 +716,7 @@ class Moodboard extends Controller {
 				// now show delete screen
 				$data = array(
 					"mb_title" => $mb->m_title,
-					"mb_url" => $base."moodboard/view/".$mb->moodboard_id."/", 
+					"mb_url" => $base."moodboard/view/".$mb->moodboard_id.'/'.slugify($mb->m_title).'/', 
 					"delete_id" => $mb->moodboard_id
 				);
 				

@@ -128,7 +128,7 @@ class User extends Controller {
 					$data = array(
 						"thumb_url" => $irow->i_thumb_url,
 						"title" => $irow->i_title,
-						"url" => $base.'image/view/'.$irow->image_id.'/',
+						"url" => $base.'image/view/'.$irow->image_id.'/'.slugify($irow->i_title).'/',
 						"user_url" => $base.'user/u/'.$row->u_username.'/',
 						"username" => $row->u_username,
 						"views" => $irow->i_views,
@@ -177,7 +177,7 @@ class User extends Controller {
 					$data = array(
 						"thumb_url" => $mrow->m_thumb_url,
 						"title" => $mrow->m_title,
-						"url" => $base.'moodboard/view/'.$mrow->moodboard_id.'/',
+						"url" => $base.'moodboard/view/'.$mrow->moodboard_id.'/'.slugify($mrow->m_title).'/',
 						"user_url" => $base.'user/u/'.$row->u_username.'/',
 						"username" => $row->u_username,
 						"views" => $mrow->m_views,
@@ -253,7 +253,7 @@ class User extends Controller {
 						$data = array(
 							"thumb_url" => $irow->i_thumb_url,
 							"title" => $irow->i_title,
-							"url" => $base.'image/view/'.$irow->image_id.'/',
+							"url" => $base.'image/view/'.$irow->image_id.'/'.slugify($irow->i_title).'/',
 							"user_url" => $base.'user/u/'.$irow->u_username.'/',
 							"username" => $irow->u_username,
 							"views" => $irow->i_views,
@@ -269,7 +269,7 @@ class User extends Controller {
 						$data = array(
 							"thumb_url" => $irow->m_thumb_url,
 							"title" => $irow->m_title,
-							"url" => $base.'moodboard/view/'.$irow->moodboard_id.'/',
+							"url" => $base.'moodboard/view/'.$irow->moodboard_id.'/'.slugify($irow->m_title).'/',
 							"user_url" => $base.'user/u/'.$row->u_username.'/',
 							"username" => $row->u_username,
 							"views" => $irow->m_views,

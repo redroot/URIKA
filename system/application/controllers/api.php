@@ -466,7 +466,7 @@ class api extends Controller {
 			"id" => $image->image_id,
 			"user_id" => $image->i_user_id,
 			"title" => $image->i_title,
-			"upload_link" => $base.'image/view/'.$image->image_id.'/',
+			"upload_link" => $base.'image/view/'.$image->image_id.'/'.slugify($image->i_title).'/',
 			"description" => $image->i_description,
 			"thumb_url" => $image->i_thumb_url,
 			"full_url" => $image->i_full_url,
@@ -496,7 +496,7 @@ class api extends Controller {
 			"id" => $mb->moodboard_id,
 			"user_id" => $mb->m_user_id,
 			"title" => $mb->m_title,
-			"upload_link" => $base.'moodboard/view/'.$mb->moodboard_id.'/',
+			"upload_link" => $base.'moodboard/view/'.$mb->moodboard_id.'/'.slugify($mb->m_title).'/',
 			"description" => $mb->m_description,
 			"thumb_url" => $mb->m_thumb_url,
 			"full_url" => $mb->m_full_url,
@@ -654,7 +654,7 @@ class api extends Controller {
 							else if($params["urika_crop_width"] < $params["urika_crop_height"])
 							{
 								$offx = 0;
-								$offy = ($params["urika_crop_height"]/2)-($params["urika_crop_width"]]/2);
+								$offy = ($params["urika_crop_height"]/2)-($params["urika_crop_width"]/2);
 								
 								$copy_w = $copy_h = $params["urika_crop_width"];
 							}
@@ -682,7 +682,7 @@ class api extends Controller {
 								// if all goes to plan, send upload link
 								
 								$out = json_encode(array(
-									"url" => $base_url.'image/view/'.$query["id"].'/'
+									"url" => $base_url.'image/view/'.$query["id"].'/'.slugify(trim($params["urika_crop_title"])).'/'
 								));
 								
 								$request_insert_array["r_success"] = 1;

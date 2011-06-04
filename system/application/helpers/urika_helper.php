@@ -512,6 +512,20 @@ function queryStringDrop($filter_var,$list,$inc_page = 0)
 	}
 }
 
+/*
+	Sanitizes a string to be URL friendly, a slug basically
+	
+	@param filename : the string the slugify
+*/
+function slugify( $filename ) {
+    $filename_raw = $filename;
+    $special_chars = array("?", "[", "]", "/", "\\", "=", "<", ">", ":", ";", ",", "'", "\"", "&", "$", "#", "*", "(", ")", "|", "~", "`", "!", "{", "}");
+    $filename = str_replace($special_chars, '', $filename);
+    $filename = preg_replace('/[\s-]+/', '-', $filename);
+    $filename = trim($filename, '.-_');
+    return $filename;
+}
+
 
 /* End of file urika_helper.php */
 /* Location: ./system/helpers/urika_helper.php */

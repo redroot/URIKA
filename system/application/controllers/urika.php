@@ -136,13 +136,13 @@ class Urika extends Controller {
 				
 					if($latest["results"][$i]->type == "image")
 					{
-						$row_url = $base.'image/view/'.$latest["results"][$i]->row_id.'/';
+						$row_url = $base.'image/view/'.$latest["results"][$i]->row_id.'/'.slugify($latest["results"][$i]->row_title).'/';
 						$overlay = $base.'assets/images/layout/uploadListOverlay.gif';
 						$view = "components/uploadListLi";
 					}
 					else
 					{
-						$row_url = $base.'moodboard/view/'.$latest["results"][$i]->row_id.'/';
+						$row_url = $base.'moodboard/view/'.$latest["results"][$i]->row_id.'/'.slugify($latest["results"][$i]->row_title).'/';
 						$overlay = $base.'assets/images/layout/mbListOverlay.gif';
 						$view = "components/mbListLi";
 					}
@@ -191,13 +191,13 @@ class Urika extends Controller {
 				
 				if($by_views["results"][$i]->type == "image")
 				{
-					$row_url = $base.'image/view/'.$by_views["results"][$i]->row_id.'/';
+					$row_url = $base.'image/view/'.$by_views["results"][$i]->row_id.'/'.slugify($by_views["results"][$i]->row_title).'/';
 					$overlay = $base.'assets/images/layout/uploadListOverlay.gif';
 					$view = "components/uploadListLi";
 				}
 				else
 				{
-					$row_url = $base.'moodboard/view/'.$by_views["results"][$i]->row_id.'/';
+					$row_url = $base.'moodboard/view/'.$by_views["results"][$i]->row_id.'/'.slugify($by_views["results"][$i]->row_title).'/';
 					$overlay = $base.'assets/images/layout/mbListOverlay.gif';
 					$view = "components/mbListLi";
 				}
@@ -247,13 +247,13 @@ class Urika extends Controller {
 					
 					if($following[$i]->type == "image")
 					{
-						$row_url = $base.'image/view/'.$following[$i]->row_id.'/';
+						$row_url = $base.'image/view/'.$following[$i]->row_id.'/'.slugify($following[$i]->row_title).'/';
 						$overlay = $base.'assets/images/layout/uploadListOverlay.gif';
 						$view = "components/uploadListLi";
 					}
 					else
 					{
-						$row_url = $base.'moodboard/view/'.$following[$i]->row_id.'/';
+						$row_url = $base.'moodboard/view/'.$following[$i]->row_id.'/'.slugify($following[$i]->row_title).'/';
 						$overlay = $base.'assets/images/layout/mbListOverlay.gif';
 						$view = "components/mbListLi";
 					}

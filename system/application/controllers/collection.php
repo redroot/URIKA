@@ -67,7 +67,7 @@ class Collection extends Controller {
 					$data = array(
 						"thumb_url" => $irow->i_thumb_url,
 						"title" => $irow->i_title,
-						"url" => $base.'image/view/'.$irow->image_id.'/',
+						"url" => $base.'image/view/'.$irow->image_id.'/'.slugify($irow->i_title).'/',
 						"user_url" => $base.'user/u/'.$irow->u_username.'/',
 						"username" => $irow->u_username,
 						"views" => $irow->i_views,
@@ -309,7 +309,7 @@ class Collection extends Controller {
 										<a href="'.$base.'user/u/'.$this->session->userdata("username").'/" title="'.$this->session->userdata("username").'\'s profile">'.$this->session->userdata("username").'</a> added your ';
 										
 								
-								$n_url = $base.'image/view/'.$image->image_id.'/';			
+								$n_url = $base.'image/view/'.$image->image_id.'/'.slugify($image->i_title).'/';			
 									
 								$notice_html .= 'upload <a href="'.$n_url.'" title="View this image">'.$image->i_title.'</a>';
 								
@@ -441,7 +441,7 @@ class Collection extends Controller {
 								<a href="'.$base.'user/u/'.$this->session->userdata("username").'/" title="'.$this->session->userdata("username").'\'s profile">'.$this->session->userdata("username").'</a> added your ';
 								
 						
-						$n_url = $base.'image/view/'.$image->image_id.'/';			
+						$n_url = $base.'image/view/'.$image->image_id.'/'.slugify($irow->i_title).'/';			
 							
 						$notice_html .= 'upload <a href="'.$n_url.'" title="View this image">'.$image->i_title.'</a>';
 						

@@ -291,7 +291,6 @@ class Image extends Controller {
 					"profile_url" => $profile_url,
 					"base_url" => $base,
 					"controlsHTML" => $controlsHTML,
-					"message" => $message,
 					"favs_html" => $favs_html,
 					"favs_count" => $favs_count,
 					"comments_html" => $comments_html,
@@ -369,7 +368,7 @@ class Image extends Controller {
 				
 				$this->image_model->updateImage($update_data,$this->input->post("edit_id"));
 				
-				$redirect  = "/image/view/".$this->input->post("edit_id")."/saved/";
+				$redirect  = "/image/view/".$this->input->post("edit_id")."/".slugify($update_data["i_title"])."/?saved=1";
 				redirect($redirect,'location');
 				
 				
@@ -547,7 +546,7 @@ class Image extends Controller {
 				// now show delete screen
 				$data = array(
 					"image_title" => $image->i_title,
-					"image_url" => $base."image/view/".$image->image_id."/", 
+					"image_url" => $base."image/view/".$image->image_id."/".slugify($image->i_title)."/", 
 					"delete_id" => $image->image_id
 				);
 				
@@ -765,7 +764,7 @@ class Image extends Controller {
 						}
 					}
 				
-					redirect("/image/view/".$query['id']."/","location");
+					redirect("/image/view/".$query['id']."/".slugify($insert_array["i_title"])."/","location");
 				}
 			}
 			

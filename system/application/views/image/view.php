@@ -6,7 +6,11 @@
 	<div class="clear">&nbsp;</div>
 </div>
 <div id="image_view" class="bumpUp">
-<?php if($message == "saved")
+<?php 
+
+$q_vars = get_url_vars();
+
+if(isset($q_vars->saved))
 {
 	echo '<p class="success" style="margin-bottom: 10px;">Image details saved successfully!</p>';
 }

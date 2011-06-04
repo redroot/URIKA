@@ -113,14 +113,19 @@ class Favourite extends Controller {
 							
 					if($_POST["object_type"] == "image")
 					{
-						$n_url = $base.'image/view/'.$_POST["subject_id"].'/';			
+						$this->load->model("image_model");
+						$image = $this->image_model->getImage($_POST["subject_id"])->row();
+						$n_url = $base.'image/view/'.$_POST["subject_id"].'/'.slugify($image->i_title).'/';			
 						
 						$notice_html .= 'upload <a href="'.$n_url.'" title="View this image">'.$obj_name.'</a>';
 					}
 					else if($_POST["object_type"] == "moodboard")
 					{
-						$n_url = $base.'moodboard/view/'.$_POST["subject_id"].'/';			
-						
+						$this->load->model("moodboard_model");
+						$mb = $this->moodboard_model->getMoodboard($_POST["subject_id"])->row();
+
+						$n_url = $base.'moodboard/view/'.$_POST["subject_id"].'/'.slugify($mb->m_title).'/';				
+							
 						$notice_html .= 'moodboard <a href="'.$n_url.'" title="View this moodboard">'.$obj_name.'</a>';
 					}
 					

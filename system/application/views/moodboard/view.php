@@ -9,7 +9,7 @@
 <?php 
 $q_vars = get_url_vars();
 		
-if(isset($q_vars->message) && $q_vars->message == "saved")
+if(isset($q_vars->saved))
 {
 	echo '<p class="success" style="margin-bottom: 10px;">Moodboard details saved successfully!</p>';
 }

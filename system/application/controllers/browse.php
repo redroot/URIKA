@@ -128,7 +128,7 @@ class Browse extends Controller {
 					$data = array(
 						"thumb_url" => $results[$i]->i_thumb_url,
 						"title" => $results[$i]->i_title,
-						"url" => $base.'image/view/'.$results[$i]->image_id.'/',
+						"url" => $base.'image/view/'.$results[$i]->image_id.'/'.slugify($results[$i]->i_title).'/',
 						"user_url" => $base.'user/u/'.$results[$i]->u_username.'/',
 						"username" => $results[$i]->u_username,
 						"views" => $results[$i]->i_views,
@@ -143,7 +143,7 @@ class Browse extends Controller {
 					$data = array(
 						"thumb_url" => $results[$i]->m_thumb_url,
 						"title" => $results[$i]->m_title,
-						"url" => $base.'moodboard/view/'.$results[$i]->moodboard_id.'/',
+						"url" => $base.'moodboard/view/'.$results[$i]->moodboard_id.'/'.slugify($results[$i]->m_title).'/',
 						"user_url" => $base.'user/u/'.$results[$i]->u_username.'/',
 						"username" => $results[$i]->u_username,
 						"views" => $results[$i]->m_views,
@@ -158,13 +158,13 @@ class Browse extends Controller {
 					
 					if($results[$i]->type == "image")
 					{
-						$row_url = $base.'image/view/'.$results[$i]->row_id.'/';
+						$row_url = $base.'image/view/'.$results[$i]->row_id.'/'.slugify($results[$i]->row_title).'/';
 						$overlay = $base.'assets/images/layout/uploadListOverlay.gif';
 						$view = "components/uploadListLi";
 					}
 					else
 					{
-						$row_url = $base.'moodboard/view/'.$results[$i]->row_id.'/';
+						$row_url = $base.'moodboard/view/'.$results[$i]->row_id.'/'.slugify($results[$i]->row_title).'/';
 						$overlay = $base.'assets/images/layout/mbListOverlay.gif';
 						$view = "components/mbListLi";
 					}
@@ -363,7 +363,7 @@ class Browse extends Controller {
 									$data = array(
 										"thumb_url" => $irow->i_thumb_url,
 										"title" => $irow->i_title,
-										"url" => $base.'image/view/'.$irow->image_id.'/',
+										"url" => $base.'image/view/'.$irow->image_id.'/'.slugify($irow->i_title).'/',
 										"user_url" => $base.'user/u/'.$irow->u_username.'/',
 										"username" => $irow->u_username,
 										"views" => $irow->i_views,
@@ -378,7 +378,7 @@ class Browse extends Controller {
 									$data = array(
 										"thumb_url" => $irow->i_thumb_url,
 										"title" => $irow->i_title,
-										"url" => $base.'image/view/'.$irow->image_id.'/',
+										"url" => $base.'image/view/'.$irow->image_id.'/'.slugify($irow->i_title).'/',
 										"user_url" => $base.'user/u/'.$irow->u_username.'/',
 										"username" => $irow->u_username,
 										"views" => $irow->i_views,
@@ -394,7 +394,7 @@ class Browse extends Controller {
 									$data = array(
 										"thumb_url" => $irow->m_thumb_url,
 										"title" => $irow->m_title,
-										"url" => $base.'moodboard/view/'.$irow->moodboard_id.'/',
+										"url" => $base.'moodboard/view/'.$irow->moodboard_id.'/'.slugify($irow->m_title).'/',
 										"user_url" => $base.'user/u/'.$irow->u_username.'/',
 										"username" => $irow->u_username,
 										"views" => $irow->m_views,
@@ -441,7 +441,7 @@ class Browse extends Controller {
 									$data = array(
 										"thumb_url" => $mrow->m_thumb_url,
 										"title" => $mrow->m_title,
-										"url" => $base.'moodboard/view/'.$mrow->moodboard_id.'/',
+										"url" => $base.'moodboard/view/'.$mrow->moodboard_id.'/'.slugify($mrow->m_title).'/',
 										"user_url" => $base.'user/u/'.$mrow->u_username.'/',
 										"username" => $mrow->u_username,
 										"views" => $mrow->m_views,
