@@ -5,7 +5,7 @@
 class User extends Controller {
 
 	// global setting for invites. e.g. test invite code, display invites
-	private $useInvites = true;
+	private $useInvites = false;
 
 	function User()
 	{
@@ -899,10 +899,26 @@ class User extends Controller {
 		$this->template->add_js("assets/js/formvalidation.js");
 		$this->template->write("title","Join Urika");
 		
-		//empty for now
+		// random number fun
+		$r_a = rand(1,10);
+		$r_b = rand(5,25);
+		$r_t = $r_a + $r_b;
+		
+		
+		$answer = md5($r_t*($r_t/2));
+		
+		// csrf for this form, need #a random session carried over the next stage
+		$this->load->helper("string");
+		$csrf = random_string('alnum',16);
+		$this->session->set_userdata("csrf",$csrf);
+
 		$data = array(
 			"further_errors" => "",
-			"useInvite" => $this->useInvites
+			"useInvite" => $this->useInvites,
+			"r_a" => $r_a,
+			"r_b" => $r_b,
+			"answer" => $answer,
+			"csrf" => $this->session->userdata("csrf")
 			);
 		
 		$this->template->write_view("content","user/signup_form", $data, TRUE);
@@ -965,14 +981,37 @@ class User extends Controller {
 		// used for additional errors
 		$further_errors = array();
 		
+		// random number fun
+		$r_a = rand(1,10);
+		$r_b = rand(5,25);
+		$r_t = $r_a + $r_b;
+		
+		$answer = md5($r_t*($r_t/2));
+		
+		
+			$this->load->helper("string");
+		
 		
 		if($this->form_validation->run() == FALSE)
 		{
 			$this->template->add_js("assets/js/formvalidation.js");
 			$this->template->write("title","Join Urika");
 			
+		
+			$csrf = random_string('alnum',16);
+			$this->session->set_userdata("csrf",$csrf);
+			
 			//empty for now
-			$data = array("further_errors" => "");
+			$data = array(
+			"further_errors" => "",
+			"useInvite" => $this->useInvites,
+			"r_a" => $r_a,
+			"r_b" => $r_b,
+			"answer" => $answer,
+			"csrf" => $this->session->userdata("csrf")
+			);
+			
+			
 			
 			$this->template->write_view("content","user/signup_form", $data, TRUE);
 			
@@ -1003,9 +1042,13 @@ class User extends Controller {
 				$further_errors[] = "This email has been blacklisted";
 			}
 			
-			if($this->input->post("s_human") != "11")
+			if(md5(((int)$this->input->post("s_human"))*(((int) $this->input->post("s_human"))/2)) != $this->input->post("s_humanity"))
 			{
 				$further_errors[] = "Leave well enough alone spam bot";
+			}
+			
+			if($this->input->post("s_cross") != $this->session->userdata("csrf")){
+				$further_errors[] = "Cross site attempt. silly";
 			}
 			
 			// invite check  
@@ -1037,10 +1080,18 @@ class User extends Controller {
 					$out .= '<p class="error">'.$error.'</p>';
 				}
 				
-				$data = array(
-			"further_errors" => $out,
-			"useInvite" => $this->useInvites
-			);
+				$csrf = random_string('alnum',16);
+			$this->session->set_userdata("csrf",$csrf);
+					
+					$data = array(
+						"further_errors" => $out,
+						"useInvite" => $this->useInvites,
+						"r_a" => $r_a,
+						"r_b" => $r_b,
+						"answer" => $answer,
+						"csrf" => $this->session->userdata("csrf")
+						);
+						
 				
 				$this->template->add_js("assets/js/formvalidation.js");
 				$this->template->write("title","Join Urika");

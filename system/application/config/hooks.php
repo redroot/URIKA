@@ -10,6 +10,12 @@
 |
 */
 
+//
+// CSRF Protection hooks, don't touch these unless you know what you're
+// doing.
+//
+// THE ORDER OF THESE HOOKS IS EXTREMELY IMPORTANT!!
+//
 
 
 /* End of file hooks.php */

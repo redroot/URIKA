@@ -50,11 +50,13 @@
 			</li>
 		
 			<li>
-				<label for="s_human">Human Check: 8 + 3 = ?</label>
+				<label for="s_human">Human Check: <?php echo $r_a; ?> + <?php echo $r_b; ?> = ?</label>
 				<input type="text" name="s_human" id="s_human" class="required"  />
+				<input type="text" class="hide" name="s_humanity" value="<?php echo $answer; ?>" />
 			</li>
 			<li class="form_last">
 				<input type="submit" name="s_submit" id="s_submit" value="Sign Up" id='signupButton' /> 
+				<input type="text" class="hide" name="s_cross" value="<?php echo $csrf; ?>" />
 			</li>
 		</ul>
 

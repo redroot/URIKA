@@ -1,7 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html> 
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]--> 
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]--> 
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]--> 
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]--> 
 <head>
+
+	   
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+   <meta http-equiv="content-language" content="en" /> 
+   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+   <meta name="viewport" content="width=1000; initial-scale=1.0" /> 
+        
+
 
    <title><?php echo $title ?> - URIKA - Sharing Inspiration</title>
 
@@ -15,8 +25,7 @@
 	<![endif]-->
    
    <?= $_styles ?>
-   
-   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
   
 </head>
 <body id="<?php echo $body_id; ?>">
