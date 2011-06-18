@@ -5,7 +5,7 @@
 class User extends Controller {
 
 	// global setting for invites. e.g. test invite code, display invites
-	private $useInvites = false;
+	private $useInvites = true;
 
 	function User()
 	{

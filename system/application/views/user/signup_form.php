@@ -20,7 +20,7 @@
 		{
 			echo '
 			<li class="form_li_sep">
-				<label for="s_invite"><strong>Your Invite Code</strong></label>
+				<label for="s_invite"><strong>Your Invite Code</strong> - <a href="http://urika.tumblr.com/post/6656840864/invites-for-ur-ka" title="Blog post explaining why we are using invites" target="_blank"><em>Why Invites?</em></a></label>
 				<input type="text" name="s_invite" id="s_invite" style="width: 300px" placeholder="Invite Code" class="required"  />
 			</li>
 			
