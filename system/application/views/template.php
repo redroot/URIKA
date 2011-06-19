@@ -20,9 +20,7 @@
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/content.css" /> 
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/base/jquery-ui.css" type="text/css" media="all" /> 
 	
-	<!--[if lt IE 9]>
-	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/iestyles.css" />
-	<![endif]-->
+	<link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico"> 
    
    <?= $_styles ?>
 
