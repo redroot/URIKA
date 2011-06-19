@@ -1730,12 +1730,18 @@ The Team @ UR!KA
 				$invites["count"] = $userinvites["count"];
 				$invites["html"] = '';
 				
-				foreach($userinvites["result"] as $i => $inv)
-				{
-					$invites["html"] .= '
-						<p class="borderbox">
-							Invite '.($i+1).': <strong style="color: #930;">'.$inv->inv_code.'</strong>
-						</p>
+				if($invites["count"] > 0){
+					foreach($userinvites["result"] as $i => $inv)
+					{
+						$invites["html"] .= '
+							<p class="borderbox">
+								Invite '.($i+1).': <strong style="color: #930;">'.$inv->inv_code.'</strong>
+							</p>
+						';
+					}
+				}else{
+					$invites["html"] = '
+						<p class="error">You currently have no invites</p>
 					';
 				}
 			}
