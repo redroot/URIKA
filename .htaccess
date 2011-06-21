@@ -16,4 +16,6 @@ RewriteCond $1 !^(index\.php|assets|uploads|robots\.txt)
 
 RewriteRule ^(.*)$ /urika/ci/index.php/$1 [L]
 
+ 
+
 </IfModule>

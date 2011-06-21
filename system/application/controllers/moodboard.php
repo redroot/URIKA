@@ -17,13 +17,18 @@ class Moodboard extends Controller {
 	/*
 		Allows the user to view a moodboard
 	*/
-	function view($id)
+	function view($id,$name = null)
 	{
 		$mb = $this->moodboard_model->getMoodboard($id);
 		
 		if($mb !== false)
 		{
 			$mb = $mb->row();
+			
+			if($name !== slugify($mb->m_title)){
+				// redirect to right version
+				redirect('moodboard/view/'.$mb->moodboard_id.'/'.slugify($mb->m_title).'/','location');
+			}
 			
 			$base = base_url();
 			

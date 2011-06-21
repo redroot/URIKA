@@ -19,13 +19,18 @@ class Collection extends Controller {
 	/*
 		View function
 	*/
-	function view($id)
+	function view($id, $name = null)
 	{
 		$collection = $this->collection_model->getCollection($id);
 		
 		if($collection != false)
 		{
 			$collection = $collection->row();
+			
+			if($name !== slugify($collection->col_name)){
+				// redirect to right version
+				redirect('collection/view/'.$collection->collection_id.'/'.slugify($collection->col_name).'/','location');
+			}
 
 			$images = $this->collection_model->getCollectionImages($id);
 			$base = base_url();

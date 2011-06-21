@@ -21,7 +21,7 @@ class Image extends Controller {
 	/**
 		Viewing an image page
 	**/
-	function view($id = null,$message = null)
+	function view($id = null,$name = null)
 	{
 		$q_vars = get_url_vars();
 		
@@ -45,6 +45,11 @@ class Image extends Controller {
 					
 				//now render templates
 				$this->template->render();
+				
+			}else if($name != null && $name !== slugify($image->row()->i_title)){
+				// redirect to right version
+				$image = $image->row();
+				redirect('image/view/'.$image->image_id.'/'.slugify($image->i_title)."/",'location');
 			}
 			else
 			{
