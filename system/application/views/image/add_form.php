@@ -51,11 +51,13 @@
 			</li>
 			<li>
 				<label for="add_desc">Description * (required):</label>
-				<textarea name="add_desc" id="add_desc" class="required" cols="30" rows="5"></textarea>
+				<textarea name="add_desc" id="add_desc"  class="required" cols="30" rows="5"></textarea>
 			</li>
 			<li>
-				<label for="add_tags">Tags to describe your upload e.g. header, navigation, red. <strong>(press enter to select tag)</strong>:</label>
-				<input type="text" name="add_tags" id="add_tags" style="width: 350px;"  />
+				<label for="add_tags">Tags to describe your upload e.g. header, navigation, red:</label>
+				<select name="add_tags[]" id="add_tags" data-placeholder="Start typing to see list of tags" multiple style="width: 350px;">
+					<?php echo $tag_select_options; ?>
+				</select>
 			</li>
 			<?php
 				if($col_element != "")

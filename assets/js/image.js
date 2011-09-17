@@ -35,7 +35,7 @@ $(document).ready(function()
 		);
 	}
 	
-	
+	/*
 	// tags stuff
 
 	if($.browser.msie == true)
@@ -78,6 +78,8 @@ $(document).ready(function()
 			});
 		}
 	}
+	*/
+	$("#add_tags,#edit_tags").chosen();
 	
 	// collection stuff
 	if($(".collectionEditList").length > 0)

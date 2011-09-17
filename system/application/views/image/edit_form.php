@@ -27,7 +27,9 @@
 			</li>
 			<li>
 				<label for="edit_tags">Tags:</label>
+				<select type="text" name="edit_tags[]" multiple id="edit_tags" style="width: 350px;">
 				<?php echo $tagsHTML; ?>
+				</select>
 			</li>
 			<li>
 				<input type="submit" name="edit_save" id="edit_save" value="Save Image" />

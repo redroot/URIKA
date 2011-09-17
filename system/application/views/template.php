@@ -169,7 +169,7 @@
 		<a href="<?php echo $base; ?>page/terms/" title="Terms">Terms</a>  |  
 		<a href="<?php echo $base; ?>page/privacy/" title="Privacy Policy">Privacy Policy</a>  |  
 		<a href="<?php echo $base; ?>page/contact/" title="Get in Touch">Contact</a> 
-		<p>Copyright © 2010-<?php echo date('Y'); ?> UR!KA. All screenshots © their respective owners or sources.</p>
+		<p>Copyright 2010-<?php echo date('Y'); ?> UR!KA. All screenshots copyright their respective owners or sources.</p>
 		<p>UR!KA was built and is run by <a href="http://www.red-root.com" title="Luke Williams" target="_blank">Red<strong>Root</strong></a></p>
 	</div>
 </div>

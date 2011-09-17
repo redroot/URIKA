@@ -5,6 +5,7 @@
 class Image extends Controller {
 
 	var $thumbSize = array("w" => 160, "h" => 160);
+	var $tags_array = array();
 
 	function Image()
 	{
@@ -308,6 +309,7 @@ class Image extends Controller {
 				$this->template->write("title",$image->i_title.", uploaded by ".$user->u_username);
 				
 
+				
 				$this->template->add_js("assets/js/image.js");
 				$this->template->add_js("assets/js/ajax.js");
 				$this->template->add_js("assets/js/tabs.js");
@@ -338,31 +340,17 @@ class Image extends Controller {
 				// save everything
 				
 				
-				// sorts
-				$tags = "";
-				if(is_array($this->input->post("edit_tags")))
-				{
-					if(count($this->input->post("edit_tags")) > 0)
-					{
-						foreach($this->input->post("edit_tags") as $tag)
-						{
-							if($tag != "")
-								$tags .= $tag.',';
-						}
-						$tags = substr($tags,0,-1);
-					}
-				}
-				else
-				{
-					$tags = $this->input->post("edit_tags");
-				}
+				$tags = $this->input->post("edit_tags");
 				
 				// check if tags are empty
 				if($tags == "" || empty($tags) || $tags[0] == "")
 				{
 					$tags = "";
 				}
-				
+				else{
+					$tags = implode(",",$tags);
+				}
+					
 				// update array 
 				$update_data = array(
 					"i_title" => $this->input->post("edit_title"),
@@ -411,40 +399,39 @@ class Image extends Controller {
 				}
 				
 				$tagsHTML = "";
+
 				
-				if(!$isIE)
-				{
-					$tagsHTML = '<select type="text" name="edit_tags" id="edit_tags" style="width: 350px;">';
-					
-					$explode = explode(",",$image->i_tags);
-					foreach($explode as $tag)
-					{
-						if($tag != "")
-						{
-							$tagsHTML .= '
-								<option class="selected" value="'.$tag.'">'.$tag.'</option>
-							';
+				$this->_setTaggingFile();
+								
+				
+				$options = '';
+				
+				$explode = explode(",",$image->i_tags);
+				
+				foreach($this->tags_array as $tag){
+					if($tag != ""){
+						if(in_array($tag->caption,$explode)){
+							$opt = "<option selected value='".$tag->caption."'>".$tag->caption."</option>";
+						}else{
+							$opt = "<option value='".$tag->caption."'>".$tag->caption."</option>";
 						}
 					}
 					
-					$tagsHTML .= '</select>';
-				}
-				else
-				{
-					// if ie
-					$tagsHTML = '<input type="text" name="edit_tags" id="edit_tags" value="'.$image->i_tags.'" style="width: 350px;" />';
+					$options .= $opt;
 				}
 				
+			
 				
 				
 				
 				$data = array(
 					"image" => $image,
-					"tagsHTML" => $tagsHTML
+					"tagsHTML" => $options
 				);
 				
 				
-				$this->template->add_js("assets/js/libs/jquery.fcbkcomplete.js");
+				$this->template->add_js("assets/js/libs/chosen.js");
+				
 				$this->template->add_js("assets/js/image.js");
 				$this->template->add_js("assets/js/formvalidation.js");
 					
@@ -586,17 +573,17 @@ class Image extends Controller {
 			// sort tags first
 			$tags = "";
 			
-			if($this->input->post("add_tags_list") !== "") // use ff version
-				$tags = $this->input->post("add_tags_list");
-			else
-				$tags = $this->input->post("add_tags"); // use ie verson
+			$tags = $this->input->post("add_tags"); // use ie verson
 			
 			// check if tags are empty
 			if($tags == "" || empty($tags) || $tags[0] == "")
 			{
 				$tags = "";
 			}
-			
+			else{
+				$tags = implode(",",$tags);
+			}
+		
 			// some initial
 			$insert_array = array(
 				"i_user_id" => $this->session->userdata("user_id"),
@@ -796,13 +783,24 @@ class Image extends Controller {
 			// reload tags cache
 			$this->_setTaggingFile();
 			
+			
+			
 			$data = array();
+			
+			
+			// generate our options
+			
+			$data["tag_select_options"] = "";
+			foreach($this->tags_array as $tag){
+				$opt = "<option value='".$tag->caption."'>".$tag->caption."</option>";
+				$data["tag_select_options"] .= $opt;
+			}
 			
 			$this->template->write("title","Upload an Image");
 			
 			$this->template->add_js("assets/js/libs/fileuploader.js");
 			$this->template->add_js("assets/js/libs/jquery.Jcrop.min.js");
-			$this->template->add_js("assets/js/libs/jquery.fcbkcomplete.js");
+			$this->template->add_js("assets/js/libs/chosen.js");
 			$this->template->add_js("assets/js/image.js");
 			$this->template->add_js("assets/js/formvalidation.js");
 			
@@ -1199,13 +1197,17 @@ class Image extends Controller {
 			
 			write_file("./assets/tags/tags.txt",trim($full));
 			write_file("./assets/tags/popular.txt",trim($popular));
+			
+			$this->tags_array = $tags_json["full"];
 		}
 		else
 		{
 			// cache hit or data is less than an hour old
 			
-		
+			$this->tags_array =  json_decode($cache["data"]);
 		}
+		
+		
 	
 		return true; // arbitary since it doesnt do anything
 		
