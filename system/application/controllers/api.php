@@ -574,7 +574,7 @@ class api extends Controller {
 					
 					// signed in check
 					
-					if(isLoggedIn() && $this->session->userdata("user_id") == $user->user_id)
+					/*if(isLoggedIn() && $this->session->userdata("user_id") == $user->user_id)
 					{
 						$auth = true;
 					}
@@ -582,7 +582,7 @@ class api extends Controller {
 					{	
 						$auth = false;
 						$out = json_encode(array("error" => "You must be logged in to UR!KA to use the extension. Simple open a new tab and login and the extension should work fine :)"));
-					}
+					}*/
 				}
 				
 				if($auth == true)

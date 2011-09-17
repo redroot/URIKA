@@ -73,7 +73,7 @@ border-radius: 5px; }
 				#lform label {display: block; margin-top: 0px; color: #ffeecc; }
 				#lform input {padding: 3px; border: 1px solid #fff;  width: 220px; border-radius: 5px; -moz-border-radius: 5px; margin-bottom: 10px;}
 					#lform input#l_submit { width: 100px; float: left; }
-					#lform input#l_remember {width: 40px; margin-top: 7px; float: left; }
+					#lform input#l_remember {width: 30px; margin-top: 7px; clear: both; }
 
 
 			#signup_li a, #signup_li a:visited{color:#ff9c00;}

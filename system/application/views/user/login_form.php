@@ -21,6 +21,7 @@
 				<input type="password" name="l_password" id="l_password" placeholder="Password"  class="required"   />
 			
 			</li>
+			<input type="checkbox" class="checkbox_input" name="l_remember" id="l_remember" value="yes"> Remember Me
 			<li class="form_last">
 				<input type="submit" name="l_submit" id="l_submit" value="Log In" id='loginButton' /> 
 			</li>

@@ -1289,6 +1289,24 @@ The Team @ UR!KA
 					);
 					$this->session->set_userdata($data);
 					
+					/* set cookie date if true */
+					if($this->input->post("l_remember") !== FALSE)
+					{
+						$cookie = array(
+						    'name'   => 'urika_userlogin',
+						    'value'  => $row->u_username,
+						);
+						
+						$hash_cookie = array(
+						    'name'   => 'urika_usersecret',
+						    'value'  => md5($row->u_username . $row->u_password),
+						);
+						
+						setcookie($cookie["name"],$cookie["value"],time() + 86500, "/",false);
+						setcookie($hash_cookie["name"],$hash_cookie["value"],time() + 86500, "/", false);
+
+					}
+					
 					
 					if($this->input->post("l_redirect") !== FALSE && $this->input->post("l_redirect") != "" && $this->input->post("l_redirect") != "/user/logout")
 					{
@@ -1327,6 +1345,10 @@ The Team @ UR!KA
 		$this->session->unset_userdata("is_logged_in");
 		$this->session->destroy();
 		
+		setcookie("urika_userlogin","",time() - 3600,"/");
+		setcookie("urika_usersecret","",time() - 3600, "/");
+		setcookie("urika_login_tried","",time() - 3600, "/");
+		
 		$this->template->write("title","Logged Out");
 			
 		$this->template->write_view("content","general/loggedout", $data, TRUE);
@@ -1334,6 +1356,7 @@ The Team @ UR!KA
 		//now render templates
 		$this->template->render();
 	}
+
 	
 	/**
 	*	Verifies a user based on two parameters in the url. Defaults to null to stop errors 

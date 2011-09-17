@@ -26,6 +26,9 @@
 
   
 </head>
+<?php
+	inspect($_COOKIE);
+?>
 <body id="<?php echo $body_id; ?>">
 <div id="header_wrapper">
 	<div class="inner_wrap">
@@ -135,6 +138,7 @@
 					<input type="text" name="l_username" id="l_username" class="required" />
 					<label for="l_password">Password</label>
 					<input type="password" name="l_password" class="required" id="l_password" />
+					<input type="checkbox" class="checkbox_input" name="l_remember" id="l_remember" value="yes"> Remember Me
 					<input type="submit" name="l_submit" id="l_submit" value="Log In!" />
 					<input type="hidden" name="l_redirect" value="'.$current.'" />
 					<p class="clear"><a href="'.$base.'user/fpassword/" title="Forgotten Password">Forgotten Password?</a></p>

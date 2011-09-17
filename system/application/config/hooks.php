@@ -10,6 +10,13 @@
 |
 */
 
+$hook["post_controller_constructor"][] = array(
+	"class" => "CookieHandler",
+	"filename" => "user_cookie.php",
+	"filepath" => "hooks",
+	"function" => "handleCookies"
+);
+
 //
 // CSRF Protection hooks, don't touch these unless you know what you're
 // doing.
