@@ -347,9 +347,7 @@ class Image extends Controller {
 				{
 					$tags = "";
 				}
-				else{
-					$tags = implode(",",$tags);
-				}
+				
 					
 				// update array 
 				$update_data = array(
@@ -404,33 +402,16 @@ class Image extends Controller {
 				$this->_setTaggingFile();
 								
 				
-				$options = '';
-				
-				$explode = explode(",",$image->i_tags);
-				
-				foreach($this->tags_array as $tag){
-					if($tag != ""){
-						if(in_array($tag->caption,$explode)){
-							$opt = "<option selected value='".$tag->caption."'>".$tag->caption."</option>";
-						}else{
-							$opt = "<option value='".$tag->caption."'>".$tag->caption."</option>";
-						}
-					}
-					
-					$options .= $opt;
-				}
-				
 			
 				
 				
 				
 				$data = array(
-					"image" => $image,
-					"tagsHTML" => $options
+					"image" => $image
 				);
 				
 				
-				$this->template->add_js("assets/js/libs/chosen.js");
+				//$this->template->add_js("assets/js/libs/chosen.js");
 				
 				$this->template->add_js("assets/js/image.js");
 				$this->template->add_js("assets/js/formvalidation.js");
@@ -580,9 +561,7 @@ class Image extends Controller {
 			{
 				$tags = "";
 			}
-			else{
-				$tags = implode(",",$tags);
-			}
+			
 		
 			// some initial
 			$insert_array = array(
@@ -791,16 +770,12 @@ class Image extends Controller {
 			// generate our options
 			
 			$data["tag_select_options"] = "";
-			foreach($this->tags_array as $tag){
-				$opt = "<option value='".$tag->caption."'>".$tag->caption."</option>";
-				$data["tag_select_options"] .= $opt;
-			}
 			
 			$this->template->write("title","Upload an Image");
 			
 			$this->template->add_js("assets/js/libs/fileuploader.js");
 			$this->template->add_js("assets/js/libs/jquery.Jcrop.min.js");
-			$this->template->add_js("assets/js/libs/chosen.js");
+			//$this->template->add_js("assets/js/libs/chosen.js");
 			$this->template->add_js("assets/js/image.js");
 			$this->template->add_js("assets/js/formvalidation.js");
 			
