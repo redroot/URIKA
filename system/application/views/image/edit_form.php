@@ -22,14 +22,12 @@
 				<input type="text" style="width: 250px;" name="edit_website" id="edit_website" class="required url" value="<?php echo $image->i_website; ?>" />
 			</li>
 			<li>
-				<label for="edit_desc">Comments:</label>
+				<label for="edit_desc">Description:</label>
 				<textarea name="edit_desc" id="edit_desc" class="required" cols="30" rows="5"><?php echo html_entity_decode($image->i_description); ?></textarea>
 			</li>
 			<li>
 				<label for="edit_tags">Tags:</label>
-				<select type="text" name="edit_tags[]" multiple id="edit_tags" style="width: 350px;">
-				<?php echo $tagsHTML; ?>
-				</select>
+				<input type="text" name="edit_tags" id="edit_tags" style="width: 300px;" value="<?php echo $image->i_tags; ?>" />
 			</li>
 			<li>
 				<input type="submit" name="edit_save" id="edit_save" value="Save Image" />

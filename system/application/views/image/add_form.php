@@ -49,15 +49,13 @@
 				<label for="add_website">URL of source website * (required):</label>
 				<input type="text" style="width: 250px;" name="add_website" id="add_website" class="required url" value="http://"  />
 			</li>
-			<li>
+			<li class="hide">
 				<label for="add_desc">Description * (required):</label>
-				<textarea name="add_desc" id="add_desc"  class="required" cols="30" rows="5"></textarea>
+				<textarea name="add_desc" id="add_desc"  class="required" cols="30" rows="5"> </textarea>
 			</li>
 			<li>
-				<label for="add_tags">Tags to describe your upload e.g. header, navigation, red:</label>
-				<select name="add_tags[]" id="add_tags" data-placeholder="Start typing to see list of tags" multiple style="width: 350px;">
-					<?php echo $tag_select_options; ?>
-				</select>
+				<label for="add_tags">Tags to describe your upload e.g. header, navigation, red (comma separate):</label>
+				<input name="add_tags" id="add_tags"  type="text" style="width: 300px" />
 			</li>
 			<?php
 				if($col_element != "")

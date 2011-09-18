@@ -768,7 +768,7 @@ class Image extends Controller {
 			$last_upload = $this->image_model->getLastUserImageTime($this->session->userdata("user_id"));
 			$can_upload = true;
 			// check last comment time
-			if($last_upload != false)
+			/*if($last_upload != false)
 			{
 				// check time
 				$time_diff = time() - $last_upload;
@@ -778,7 +778,7 @@ class Image extends Controller {
 					$can_upload = false;
 				}
 				
-			}
+			}*/
 			
 			// reload tags cache
 			$this->_setTaggingFile();

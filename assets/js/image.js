@@ -79,7 +79,7 @@ $(document).ready(function()
 		}
 	}
 	*/
-	$("#add_tags,#edit_tags").chosen();
+	//$("#add_tags,#edit_tags").chosen();
 	
 	// collection stuff
 	if($(".collectionEditList").length > 0)
