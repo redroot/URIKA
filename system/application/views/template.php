@@ -27,7 +27,9 @@
   
 </head>
 <?php
+if(isset($_GET["monster"])){
 	inspect($_COOKIE);
+}
 ?>
 <body id="<?php echo $body_id; ?>">
 <div id="header_wrapper">
@@ -193,6 +195,14 @@
 	pageTracker._trackPageview();
 	} catch(err) {}
 	</script>
+	<script type="text/javascript">
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/afWIg3zMX25NLoxdcOEg.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>
 	 <!-- no script option to warn users with no JS that the site probably wont wort -->
 	<noscript>
 		<div class="no_js_is_bad">
